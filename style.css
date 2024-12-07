@@ -1,0 +1,546 @@
+:root {
+    --primary-green: #39FF14;
+    --dark-bg: #0A0A0A;
+    --border-color: #1A1A1A;
+    --text-white: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--dark-bg);
+    color: var(--text-white);
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+    margin: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    height: calc(100vh - 2rem);
+}
+
+nav {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    right: 1rem;
+    width: calc(100% - 2rem);
+    padding: 1.5rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    background: linear-gradient(to bottom, var(--dark-bg) 50%, transparent);
+}
+
+.logo img {
+    height: 40px;
+}
+
+.menu a {
+    color: var(--text-white);
+    text-decoration: none;
+    margin-left: 2rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+}
+
+.menu a:hover {
+    color: var(--primary-green);
+    background: rgba(57, 255, 20, 0.05);
+}
+
+.hero-section {
+    height: calc(100vh - 2rem);
+    display: flex;
+    align-items: center;
+    padding: 0 3rem;
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(
+        circle at 70% 50%,
+        rgba(57, 255, 20, 0.03) 0%,
+        rgba(10, 10, 10, 0) 70%
+    );
+}
+
+.hero-content {
+    flex: 1;
+    z-index: 1;
+    margin-right: 200px;
+    position: relative;
+    padding-top: 80px;
+}
+
+h1 {
+    font-size: 4.5rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+h1 span {
+    display: block;
+    opacity: 0;
+    animation: slideInLeft 0.8s ease forwards;
+}
+
+h1 span:nth-child(1) { 
+    animation-delay: 0.2s; 
+}
+h1 span:nth-child(2) { 
+    animation-delay: 0.4s; 
+}
+h1 span:nth-child(3) { 
+    animation-delay: 0.6s; 
+}
+
+.cta-section {
+    margin-top: 2rem;
+}
+
+.watch-reel {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+.watch-reel span {
+    display: inline-block;
+    opacity: 0;
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+.watch-reel span:nth-child(1) { animation-delay: 0.8s; }
+.watch-reel span:nth-child(2) { animation-delay: 0.9s; }
+.watch-reel span:nth-child(3) { animation-delay: 1s; }
+.watch-reel span:nth-child(4) { animation-delay: 1.1s; }
+
+.highlight {
+    color: var(--primary-green);
+    animation: glowText 3s ease-in-out infinite;
+}
+
+.social-links a {
+    color: var(--text-white);
+    text-decoration: none;
+    margin-right: 2rem;
+    opacity: 0;
+    transition: all 0.3s ease;
+    padding: 0.5rem 0;
+    position: relative;
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+.social-links a:nth-child(1) { animation-delay: 1.2s; }
+.social-links a:nth-child(2) { animation-delay: 1.3s; }
+
+.social-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--primary-green);
+    transition: width 0.3s ease;
+}
+
+.social-links a:hover::after {
+    width: 100%;
+}
+
+.social-links a:hover {
+    opacity: 1;
+    color: var(--primary-green);
+}
+
+.hero-3d {
+    position: absolute;
+    right: 0;
+    width: 800px;
+    height: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px;
+    transform: translateX(50px);
+}
+
+#threejs-container {
+    display: none;
+}
+
+.avocado-image {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    animation: floatingAvocado 6s ease-in-out infinite;
+    transform-style: preserve-3d;
+    scale: 1.3;
+}
+
+.avocado-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    mix-blend-mode: screen;
+    filter: 
+        drop-shadow(0 15px 30px rgba(57, 255, 20, 0.25))
+        brightness(1.2)
+        contrast(1.1)
+        saturate(1.2);
+    transform: rotate(-15deg);
+    transition: all 0.5s ease;
+}
+
+.avocado-image:hover img {
+    transform: rotate(-5deg) scale(1.1);
+    filter: 
+        drop-shadow(0 20px 40px rgba(57, 255, 20, 0.35))
+        brightness(1.3)
+        contrast(1.2)
+        saturate(1.3);
+}
+
+@keyframes floatingAvocado {
+    0%, 100% {
+        transform: translateY(0) rotate(-15deg);
+    }
+    50% {
+        transform: translateY(-15px) rotate(-12deg);
+    }
+}
+
+.start-project {
+    position: fixed;
+    bottom: 2rem;
+    right: 2.5rem;
+    z-index: 100;
+}
+
+.project-btn {
+    background: rgba(57, 255, 20, 0.05);
+    border: 2px solid var(--primary-green);
+    color: var(--text-white);
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    animation: fadeInUp 0.5s ease forwards 1.4s;
+    opacity: 0;
+}
+
+.project-btn:hover {
+    background: var(--primary-green);
+    color: var(--dark-bg);
+    box-shadow: 0 0 30px rgba(57, 255, 20, 0.2);
+}
+
+.arrow {
+    transition: transform 0.3s ease;
+}
+
+.project-btn:hover .arrow {
+    transform: translateX(5px);
+}
+
+/* Nouvelles animations pour le texte */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes glowText {
+    0%, 100% {
+        text-shadow: 0 0 10px rgba(57, 255, 20, 0.2);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(57, 255, 20, 0.4);
+    }
+}
+
+/* Animation du titre principal */
+h1 span {
+    display: block;
+    opacity: 0;
+    animation: slideInLeft 0.8s ease forwards;
+}
+
+h1 span:nth-child(1) { 
+    animation-delay: 0.2s; 
+}
+h1 span:nth-child(2) { 
+    animation-delay: 0.4s; 
+}
+h1 span:nth-child(3) { 
+    animation-delay: 0.6s; 
+}
+
+/* Animation du texte "WATCH OUR NEW REEL" */
+.watch-reel span {
+    display: inline-block;
+    opacity: 0;
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+.watch-reel span:nth-child(1) { animation-delay: 0.8s; }
+.watch-reel span:nth-child(2) { animation-delay: 0.9s; }
+.watch-reel span:nth-child(3) { animation-delay: 1s; }
+.watch-reel span:nth-child(4) { animation-delay: 1.1s; }
+
+/* Animation spéciale pour les mots en surbrillance */
+.highlight {
+    color: var(--primary-green);
+    animation: glowText 3s ease-in-out infinite;
+}
+
+/* Animation des liens sociaux */
+.social-links a {
+    opacity: 0;
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+.social-links a:nth-child(1) { animation-delay: 1.2s; }
+.social-links a:nth-child(2) { animation-delay: 1.3s; }
+
+/* Amélioration de l'animation du bouton */
+.project-btn {
+    animation: fadeInUp 0.5s ease forwards 1.4s;
+    opacity: 0;
+}
+
+/* Supprimer les anciennes animations */
+.hero-content > * {
+    animation: none;
+    opacity: 1;
+}
+
+.hero-content > *:nth-child(1) { animation-delay: 0; }
+.hero-content > *:nth-child(2) { animation-delay: 0; }
+.hero-content > *:nth-child(3) { animation-delay: 0; }
+
+/* Définir l'animation fadeInUp manquante */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Ajout des media queries pour la responsivité */
+@media screen and (max-width: 1400px) {
+    .hero-3d {
+        width: 600px;
+        height: 600px;
+        transform: translateX(0);
+    }
+
+    .hero-content {
+        margin-right: 100px;
+    }
+
+    h1 {
+        font-size: 4rem;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .hero-section {
+        padding: 0 2rem;
+    }
+
+    .hero-3d {
+        width: 500px;
+        height: 500px;
+        right: -100px;
+    }
+
+    h1 {
+        font-size: 3.5rem;
+    }
+
+    .hero-content {
+        margin-right: 50px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        margin: 0.5rem;
+    }
+
+    nav {
+        padding: 1rem 1.5rem;
+        top: 0.5rem;
+        left: 0.5rem;
+        right: 0.5rem;
+    }
+
+    .menu a {
+        margin-left: 1rem;
+        padding: 0.3rem 0.7rem;
+        font-size: 0.9rem;
+    }
+
+    .hero-section {
+        flex-direction: column;
+        justify-content: flex-start;
+        text-align: center;
+        padding: 2rem;
+        padding-top: 100px;
+    }
+
+    .hero-content {
+        margin-right: 0;
+        margin-top: 0;
+        padding-top: 20px;
+    }
+
+    h1 {
+        font-size: 3rem;
+    }
+
+    .hero-3d {
+        position: relative;
+        width: 100%;
+        height: 350px;
+        right: 0;
+        margin-top: 1rem;
+        transform: none;
+    }
+
+    .avocado-image {
+        scale: 0.8;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    .start-project {
+        bottom: 1.5rem;
+        right: 1.5rem;
+    }
+
+    .project-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    nav {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .menu {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .menu a {
+        margin-left: 0;
+        font-size: 0.8rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .watch-reel {
+        font-size: 1rem;
+    }
+
+    .hero-3d {
+        height: 250px;
+        margin-top: 1rem;
+    }
+
+    .social-links a {
+        margin-right: 1rem;
+        font-size: 0.9rem;
+    }
+
+    .start-project {
+        width: calc(100% - 2rem);
+        bottom: 1rem;
+        right: 1rem;
+    }
+
+    .project-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .hero-section {
+        padding-top: 120px;
+    }
+
+    .hero-content {
+        width: 100%;
+    }
+}
+
+/* Ajout d'une media query pour les très petits écrans */
+@media screen and (max-width: 360px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    .hero-3d {
+        height: 250px;
+    }
+
+    .menu a {
+        padding: 0.2rem 0.5rem;
+        font-size: 0.75rem;
+    }
+}
+
+/* Ajout d'une media query pour la hauteur */
+@media screen and (max-height: 700px) {
+    .hero-section {
+        padding-top: 100px;
+        justify-content: flex-start;
+    }
+
+    .hero-content {
+        padding-top: 0;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .cta-section {
+        margin-top: 1rem;
+    }
+
+    .hero-3d {
+        height: 300px;
+        margin-top: 1rem;
+    }
+}
